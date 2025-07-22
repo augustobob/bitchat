@@ -11,15 +11,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install CocoaPods (se necessário)
-      run: |
-        gem install cocoapods || true
-        pod install || true
+    - name: List project files
+      run: ls -l
 
+    # Remova CocoaPods se não usar pods
     - name: Build IPA (Unsigned)
       run: |
-        # Modifique para seu workspace e scheme:
-        xcodebuild -workspace Bitchat.xcworkspace \
+        xcodebuild -project Bitchat.xcodeproj \
           -scheme "Bitchat" \
           -configuration Release \
           -archivePath $PWD/build/Bitchat.xcarchive \
