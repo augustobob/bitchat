@@ -17,14 +17,15 @@ jobs:
     - name: List Xcode Schemes
       run: xcodebuild -project Bitchat.xcodeproj -list
 
-    # Remova CocoaPods se não usar pods
     - name: Build IPA (Unsigned)
       run: |
         xcodebuild -project Bitchat.xcodeproj \
-          -scheme "Bitchat" \
+          -scheme "NOME_DO_SCHEME_DO_APP" \
           -configuration Release \
           -archivePath $PWD/build/Bitchat.xcarchive \
-          archive
+          -destination 'generic/platform=iOS' \
+          archive \
+          SKIP_TESTS=YES
 
         xcodebuild -exportArchive \
           -archivePath $PWD/build/Bitchat.xcarchive \
