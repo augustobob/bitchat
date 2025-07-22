@@ -20,7 +20,7 @@ jobs:
     - name: Build IPA (Unsigned)
       run: |
         xcodebuild -project Bitchat.xcodeproj \
-          -scheme "NOME_DO_SCHEME_DO_APP" \
+          -scheme "bitchat_iOS" \
           -configuration Release \
           -archivePath $PWD/build/Bitchat.xcarchive \
           -destination 'generic/platform=iOS' \
